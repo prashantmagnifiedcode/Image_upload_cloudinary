@@ -1,6 +1,6 @@
-/src/components
-/src/assests
-/src/pages
+/src/components*
+/src/assests*
+/src/pages*
 /color
 /node_modules
 /.env*
