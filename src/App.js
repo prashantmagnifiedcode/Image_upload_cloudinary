@@ -1,7 +1,9 @@
-import Home from "./pages/Home";
+
+import Upload from './component2/front'
 
 function App() {
-  return <Home />;
+  return <Upload />;
 }
 
 export default App;
+
