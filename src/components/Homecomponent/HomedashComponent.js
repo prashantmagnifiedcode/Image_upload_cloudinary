@@ -9,6 +9,8 @@ import ControlledAccordions from './Alertpage'
 import MapChart from "../Graphs/map";
 import PaymentList from "../Payment/PaymentList";
 import { Reorder } from "framer-motion/dist/framer-motion"
+import Header from "../Dashboard/Header/Header.jsx";
+import Head_Wrap from '../Dashboard/Head_wrap'
 const HomeDashboardComponent = () => {
   const [items, setItems] = useState([1,2,3,4,5])
   const data = {
@@ -47,6 +49,8 @@ const HomeDashboardComponent = () => {
   };
   return (
     <>
+     
+       <Head_Wrap>   
     <div className="w-full h-screen  grid grid-row-3 gap-2">
       <div className="grid md:grid-cols-2 lg:grid-cols-3  sm:grid-cols-1 gap-2">
         {/* <div >
@@ -108,6 +112,7 @@ const HomeDashboardComponent = () => {
 
       </div> */}
     </div>
+    </Head_Wrap>
     </>
   );
 };

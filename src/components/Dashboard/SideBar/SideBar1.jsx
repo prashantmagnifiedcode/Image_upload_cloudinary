@@ -30,56 +30,68 @@ const data = {
                     <div  className="icons">
                 <Link to="/">
 
-                    <HomeIcon/>
+                    <HomeIcon style={{fontSize:"20px"}}/>
                 </Link>
                     </div>
 
                     <div className="icons">
 
-                    <EmailOutlinedIcon/>
+                    <EmailOutlinedIcon style={{fontSize:"20px"}}/>
                     </div>
                     <div className="icons">
 
-                    <ChatBubbleOutlineOutlinedIcon/>
+                    <ChatBubbleOutlineOutlinedIcon style={{fontSize:"20px"}}/>
                     </div>
                     <div className="icons">
                       <Link to="AddOfferProduct">
-                    <CalendarTodayOutlinedIcon/>
+                    <CalendarTodayOutlinedIcon style={{fontSize:"20px"}}/>
                       </Link>
                     </div>
                     <div className="icons">
                      <Link to="/users">
-                    <PeopleAltIcon/>
+                    <PeopleAltIcon style={{fontSize:"20px"}}/>
                      </Link>
                     </div>
                     <div className="icons">
                     <Link to="/Clendar">
                 
-                    <InsertDriveFileIcon/>
+                    <InsertDriveFileIcon style={{fontSize:"20px"}}/>
                     </Link>
                     </div>
                     <div className="icons">
                     <Link to="CreateInvoice">
                 
-                    <DescriptionIcon/>
+                    <DescriptionIcon style={{fontSize:"20px"}}/>
                     </Link>
                     </div>
                     <div className="icons">
                     <Link to="Todo">
                 
-                    <PlaylistAddCheckIcon/>
+                    <PlaylistAddCheckIcon style={{fontSize:"20px"}}/>
                     </Link>
                     </div>
                     <div className="icons">
                     <Link to="ChatBox">
                 
-                    <ForumIcon/>
+                    <ForumIcon style={{fontSize:"20px"}}/>
                     </Link>
                     </div>
                     <div className="icons">
                     <Link to="Logout">
                 
-                    <LogoutIcon/>
+                    <LogoutIcon style={{fontSize:"20px"}}/>
+                    </Link>
+                    </div>
+                    <div className="icons">
+                    <Link to="ListedProduct">
+                
+                    List
+                    </Link>
+                    </div>
+                    <div className="icons">
+                    <Link to="PendingForApproval">
+                
+                    Pend
                     </Link>
                     </div>
                     
@@ -91,7 +103,7 @@ const data = {
                     <div className="icons flex   items-end justify-center pb-4 ">
                     <Link to="/Clendar">
                 
-                    <SettingsIcon className=" animate-spin"style={{"font-size":"40px","color":"gray"}}/>
+                    <SettingsIcon className=" animate-spin"style={{"font-size":"30px","color":"gray"}}/>
                    
                     </Link>
                     </div>

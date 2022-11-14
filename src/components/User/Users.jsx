@@ -3,9 +3,12 @@ import FadeMenu from './option'
 import CustomizedInputBase from './search'
 import BasicTable from './table'
 import SelectSmall from '../Payment/slector'
+import Head_Wrap from '../Dashboard/Head_wrap'
 const Users=()=>{
     return(
         <>
+        <Head_Wrap>
+
         <div className=" w-full">
             
             <div className=" h-1/8 m-2 bg-white rounded p-2 ">
@@ -68,6 +71,7 @@ const Users=()=>{
   
               </div>
         </div>
+        </Head_Wrap>
         </>
     )
 }

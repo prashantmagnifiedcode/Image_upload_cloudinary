@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-import { Link ,useParams} from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import HomeIcon from '@mui/icons-material/Home';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
@@ -13,11 +13,15 @@ import DescriptionIcon from '@mui/icons-material/Description';
 import PlaylistAddCheckIcon from '@mui/icons-material/PlaylistAddCheck';
 import ForumIcon from '@mui/icons-material/Forum';
 import LogoutIcon from '@mui/icons-material/Logout';
+import {useContextState} from '../../../Redux/Global/GlobalContext.js'
 const SideBarMenu=()=>{
-   
-const data = {
-  
-  };
+    const{logout,authState}=useContextState()
+     const willdisplay=authState.WhichUser
+     const history = useHistory()
+     const logoutUser = () => {
+        logout();
+        history.push("/Login");
+      };
     return(
         <>
      
@@ -30,67 +34,81 @@ const data = {
                     <div  className="icons">
                 <Link to="/">
 
-                    <HomeIcon/>
+                    <HomeIcon style={{fontSize:"20px"}}/>
                 </Link>
                     </div>
 
                     <div className="icons">
 
-                    <EmailOutlinedIcon/>
+                    <EmailOutlinedIcon style={{fontSize:"20px"}}/>
                     </div>
                     <div className="icons">
 
-                    <ChatBubbleOutlineOutlinedIcon/>
+                    <ChatBubbleOutlineOutlinedIcon style={{fontSize:"20px"}}/>
                     </div>
                     <div className="icons">
 
-                    <CalendarTodayOutlinedIcon/>
+                    <CalendarTodayOutlinedIcon style={{fontSize:"20px"}}/>
                     </div>
                     <div className="icons">
                      <Link to="/Profile">
-                    <PeopleAltIcon/>
+                    <PeopleAltIcon style={{fontSize:"20px"}}/>
                      </Link>
                     </div>
                     <div className="icons">
                      <Link to="/users">
-                    <PeopleAltIcon/>
+                    <PeopleAltIcon style={{fontSize:"20px"}}/>
                      </Link>
                     </div>
                     <div className="icons">
                     <Link to="/Clendar">
                 
-                    <InsertDriveFileIcon/>
+                    <InsertDriveFileIcon style={{fontSize:"20px"}}/>
                     </Link>
                     </div>
                     <div className="icons">
                     <Link to="/calendars">
                 
-                    <InsertDriveFileIcon/>
+                    <InsertDriveFileIcon style={{fontSize:"20px"}}/>
                     </Link>
                     </div>
                     <div className="icons">
                     <Link to="CreateInvoice">
                 
-                    <DescriptionIcon/>
+                    <DescriptionIcon style={{fontSize:"20px"}}/>
                     </Link>
                     </div>
                     <div className="icons">
                     <Link to="Todo">
                 
-                    <PlaylistAddCheckIcon/>
+                    <PlaylistAddCheckIcon style={{fontSize:"20px"}}/>
                     </Link>
                     </div>
                     <div className="icons">
                     <Link to="ChatBox">
                 
-                    <ForumIcon/>
+                    <ForumIcon style={{fontSize:"20px"}}/>
+                    </Link>
+                    </div>
+                    {willdisplay==1?<>
+                    <div className="icons">
+                    <Link to="ListedProduct">
+                
+                    List
                     </Link>
                     </div>
                     <div className="icons">
-                    <Link to="Logout">
+                    <Link to="PendingForApproval">
                 
-                    <LogoutIcon/>
+                    Pend
                     </Link>
+                    </div></>:null
+                    }
+                    <div className="icons">
+                    
+                
+                    <LogoutIcon style={{fontSize:"20px"}} onClick={logoutUser}/>
+
                     </div>
                     
                    
@@ -101,7 +119,7 @@ const data = {
                     <div className="icons flex   items-end justify-center pb-4 ">
                     <Link to="/Clendar">
                 
-                    <SettingsIcon className=" animate-spin"style={{"font-size":"40px","color":"gray"}}/>
+                    <SettingsIcon className=" animate-spin"style={{"font-size":"30px","color":"gray"}}/>
                    
                     </Link>
                     </div>

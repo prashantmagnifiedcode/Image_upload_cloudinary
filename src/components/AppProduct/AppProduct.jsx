@@ -5,22 +5,15 @@ import Modal from '../Modal/index'
 
 let initialState = {
   name: "",
+  Brand:"",
+  BrandType:"",
   price: "",
   originalquantity: "",
-  quantity: "",
-  partNo: "",
-  gst: "",
+  originalPrice: "",
   description: "",
-  model: "",
-  oem: "",
-  producttype: "",
-  subcategory: "",
+  quantity: "",  
   category: "",
   variant: "",
-  fuelType: "",
-  outside_ncr: "",
-  inside_ncr: "",
-  originalPrice: "",
 };
 
 
@@ -32,10 +25,10 @@ const AddProduct = () => {
   const [product, setProduct] = useState(initialState);
   const [images, setImages] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  // const [oesBrand, setOesBrand] = useState([]);
+  
   const [xlsxFile, setXlsxFile] = useState(null);
   const [imageFile, setImageFile] = useState(null);
-  const [oemBrand, setOemBrand] = useState([]);
+  
   
   const handleChange = ({ target }) => {
     setProduct((prev) => ({ ...prev, [target.name]: target.value }));
@@ -96,7 +89,7 @@ const AddProduct = () => {
           borderTop: "1px solid #494949",
           
         }}
-        className=" font-bold   text-gray-600 uppercase focus:bg-white my-2 p-4 flex justify-between border  border-gray-300 rounded svelte-1l8159u"
+        className=" font-bold   text-gray-600 uppercase focus:bg-white my-2 p-2 flex justify-between border  border-gray-300 rounded svelte-1l8159u"
       >
        <div>
          <p> ADD PRODUCT</p>
@@ -130,6 +123,38 @@ const AddProduct = () => {
               />
             </div>
           </div>
+          <div className="w-full mx-2 svelte-1l8159u">
+            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
+              Brand
+            </div>
+            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
+              <input
+                required
+                autoComplete="off"
+                onChange={handleChange}
+                type="text"
+                name="Brand"
+                value={product.Brand}
+                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+              />
+            </div>
+          </div>
+          <div className="w-full mx-2 svelte-1l8159u">
+            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
+              BrandType
+            </div>
+            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
+              <input
+                required
+                autoComplete="off"
+                onChange={handleChange}
+                type="text"
+                name="BrandType"
+                value={product.BrandType}
+                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+              />
+            </div>
+          </div>
 
           <div className="w-full mx-2 svelte-1l8159u">
             <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
@@ -144,7 +169,7 @@ const AddProduct = () => {
                 type="number"
                 name="price"
                 value={product.price}
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                className="p-1 px-2  outline-none w-full text-gray-800"
               />
             </div>
           </div>
@@ -168,23 +193,6 @@ const AddProduct = () => {
 
           <div className="w-full mx-2 svelte-1l8159u">
             <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
-              Quantity
-            </div>
-            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
-              <input
-                autoComplete="off"
-                required
-                onChange={handleChange}
-                type="number"
-                name="quantity"
-                value={product.quantity}
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-              />
-            </div>
-          </div>
-
-          <div className="w-full mx-2 svelte-1l8159u">
-            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
               GST Tax (0% - 100%)
             </div>
             <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
@@ -201,23 +209,24 @@ const AddProduct = () => {
               />
             </div>
           </div>
-
           <div className="w-full mx-2 svelte-1l8159u">
             <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
-              Part Number
+              Quantity
             </div>
             <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
               <input
                 autoComplete="off"
                 required
                 onChange={handleChange}
-                type="text"
-                name="partNo"
-                value={product.partNo}
+                type="number"
+                name="quantity"
+                value={product.quantity}
                 className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
               />
             </div>
           </div>
+
+
 
           <div className="w-full mx-2 svelte-1l8159u">
             <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
@@ -236,64 +245,6 @@ const AddProduct = () => {
             </div>
           </div>
 
-          <div className="w-full mx-2 svelte-1l8159u">
-            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
-              Shipping (Inside NCR)
-            </div>
-            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
-              <input
-                autoComplete="off"
-                required
-                onChange={handleChange}
-                type="number"
-                name="inside_ncr"
-                value={product.inside_ncr}
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-              />
-            </div>
-          </div>
-
-          <div className="w-full mx-2 svelte-1l8159u">
-            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
-              Shipping (Outside NCR)
-            </div>
-            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
-              <input
-                autoComplete="off"
-                required
-                onChange={handleChange}
-                type="number"
-                name="outside_ncr"
-                value={product.outside_ncr}
-                className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-              />
-            </div>
-          </div>
-
-          <div className="w-full mx-2 svelte-1l8159u">
-            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
-              Fuel Type
-            </div>
-            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
-              <select
-                autoComplete="off"
-                required
-                onChange={handleChange}
-                type="text"
-                name="fuelType"
-                value={product.fuelType}
-                className="block w-full p-1 b px-3 bg-white rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-              >
-                <option value="" className="mt-2">
-                  Select a fuel type
-                </option>
-                <option value="petrol">PETROL</option>
-                <option value="diesel">DIESEL</option>
-                <option value="electric">ELECTRIC</option>
-                <option value="petrol,diesel">PETROL,DIESEL</option>
-              </select>
-            </div>
-          </div>
 
           <div className="w-full mx-2 svelte-1l8159u">
             <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
@@ -313,23 +264,7 @@ const AddProduct = () => {
             </div>
           </div>
 
-          <div className="w-full mx-2 svelte-1l8159u">
-            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
-              OEM Brand
-            </div>
-            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
           
-            </div>
-          </div>
-
-          <div className="w-full mx-2 svelte-1l8159u">
-            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
-              Condition
-            </div>
-            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
-            
-            </div>
-          </div>
 
           <div className="w-full mx-2 svelte-1l8159u">
             <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
@@ -340,14 +275,6 @@ const AddProduct = () => {
             </div>
           </div>
 
-          <div className="w-full mx-2 svelte-1l8159u">
-            <div className="font-bold h-6 mt-3 text-gray-600 text-xs leading-8 uppercase">
-              SubCategory
-            </div>
-            <div className="bg-white my-2 p-1 flex border border-gray-300 rounded svelte-1l8159u">
-            
-            </div>
-          </div>
 
           <fieldset className="w-full mx-2 mt-3">
             <label

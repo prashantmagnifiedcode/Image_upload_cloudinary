@@ -1,9 +1,52 @@
-import React from 'react'
+import React ,{useState}from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import {Link} from 'react-router-dom'
+import {useContextState} from '../../Redux/Global/GlobalContext.js'
+import axios from 'axios'
+import { useHistory } from "react-router-dom";
+
+import Register from './Registration.js'
 const Logins=()=>{
+  const [logindata,setlogindata]=useState({email:"",password:""})
+  
+  const handlechange=(e)=>{
+let name= e.target.name;
+let value= e.target.value;
+setlogindata({...logindata,[name]:value})
+  }
+
+  const { fetchAuthAdmin ,authState} = useContextState();
+  const isadmin=authState.WhichUser
+  const history= useHistory()
+ 
+  const onSubmit = async (e) => {
+    
+    e.preventDefault();
+    const res = await axios
+      .post(
+        " http://localhost:8080/api/auth/admin/login",
+        logindata,
+        {
+          withCredentials: true,
+        }
+      )
+      .catch((err) => {
+        console.log(err.message);
+      });
+    if (res?.data) {
+      fetchAuthAdmin();
+      history.push("/")
+      console.log("res",res);
+      return;
+      
+      
+    }
+    console.log("Invalid Credentials");
+  };
+   
     return(
         <>
+        
         <div className="bg-white h-full w-full flex justify-center items-center absolute z-10 bg-cl ">
         
         <div className="min-h-full  bg-white flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 ">
@@ -14,16 +57,22 @@ const Logins=()=>{
       <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign in to your account</h2>
      
     </div>
-    <form className="mt-8 space-y-6" action="#" method="POST">
+    <form className="mt-8 space-y-6" onSubmit={onSubmit}>
       <input type="hidden" name="remember" value="true"/>
       <div className="rounded-md shadow-sm -space-y-px">
         <div>
-          <label for="email-address" className="sr-only">Email address</label>
-          <input id="email-address" name="email" type="email" autocomplete="email" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address"/>
+          <label for="email-address " className="sr-only">Email address</label>
+          <input id="email-address" name="email" 
+          type="email" autocomplete="email"
+          value={logindata.email}
+          onChange={handlechange}
+           required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address"/>
         </div>
         <div>
           <label for="password" className="sr-only">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password"/>
+          <input id="password" name="password" 
+          value={logindata.password}
+          onChange={handlechange}type="password" autocomplete="current-password" required className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password"/>
         </div>
       </div>
 
@@ -48,6 +97,17 @@ const Logins=()=>{
           </span>
           Sign in
         </button>
+        {/* <div className="flex items-center justify-between">
+      
+        <div className="text-sm">
+          
+            
+            <Link  {isadmin==0?to="/Register":alert("You are not SuperAdmin")}>
+          <p className="font-medium text-indigo-600 hover:text-indigo-500" > Not Registered? </p>
+          </Link>
+          
+        </div>
+      </div> */}
       </div>
     </form>
   </div>

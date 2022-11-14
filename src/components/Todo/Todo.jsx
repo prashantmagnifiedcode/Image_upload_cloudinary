@@ -57,7 +57,7 @@ const Todo = () => {
   return (
     <>
        
-      <div className=" w-full    grid md:grid-cols-5 gap-2 sm:grid-cols-1  ">
+      <div className=" w-full   h-screen p-2  grid md:grid-cols-5 gap-2 sm:grid-cols-1  ">
     
         <div className=" grid md:grid-col-1 ">
          <div className=" grid gid-row-1 gap-2 ">

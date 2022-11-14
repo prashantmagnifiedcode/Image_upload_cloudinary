@@ -41,6 +41,7 @@ export default function BasicTable() {
           </TableRow>
         </TableHead>
         <TableBody>
+          
           {rows.map((row) => (
             <TableRow
               key={row.name}

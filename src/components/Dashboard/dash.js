@@ -16,35 +16,48 @@ import AddOfferProduct from '../offersection/offer'
 import Emply from '../Employ'
 import MyCalendar from '../calendar/cldcomponent/Calendar.jsx'
 import UpdateEvent from '../calendar/cldcomponent/UpdateEvent.jsx'
+import PendingProduct from '../PendingProduct'
+import ListedProduct from '../ListedProduct'
+// import Register from '../Recuiter/Recuiter.js'
+import {Redirect} from 'react-router-dom'
+import {useContextState} from '../../Redux/Global/GlobalContext.js'
+import Register from '../Login/Registration'
 const Dashboard = () => {
-  const { pathname } = useLocation();
+  
+  const  { authState}=useContextState()
+  const auth= authState.isAuthenticated
+  console.log("auth",auth)
   return (
     <>
       <Router>
         <Switch>
-          <div className="containers   ">
-  
+          <div className="containers    ">
+            
+
+            
+  {auth&&<SideBarMenu  />}
               
-            <SideBarMenu />
-            <Route     exact                  path="/form"                  render={() => <TodoAdd />}                />
+            
                 
-    <Route exact path="/Login" render={() => <Logins/>} />
             <div className="Access ">
-              {
-                pathname=="/calendars" ?
-                <div>
-                 <Route  path="/calendars" exact render={() =><MyCalendar/>} />
-                  </div>:
-                  <>
+             
+{/*                 
               <div className="header">
-                <Header />
-              </div> 
-               <div className="Card_section  overflow-y-auto  ">
+              <Header />
+              </div>  */}
+
                 <Route
                   exact
                   path="/"
-                  render={() => <HomeDashboardComponent />}
+                  render={ () => (auth ? <HomeDashboardComponent /> : <Redirect to="/Login" />)}
                 />
+            <Route     exact   path="/form"   render={() => <TodoAdd />}   />
+              {/* <Route exact path="/Login" render={() => <Logins/>} /> */}
+              <Route
+          exact
+          path="/Login"
+          render={() => (auth ? <Redirect to="/" /> : <Logins/>)}
+        />
                 <Route exact path="/Clendar" render={() => <AppProduct />} />
                 <Route exact path="/Users" render={() => <Users />} />
                 <Route exact path="/CreateInvoice" render={() => < CreateInvoice />} />
@@ -52,10 +65,13 @@ const Dashboard = () => {
                 <Route exact path="/Todo" render={() => < Todo />} />
                 <Route exact path="/ChatBox" render={() => <Chat/>} />
                 <Route exact path="/AddOfferProduct" render={() => <AddOfferProduct/>} />
+                <Route  path="/calendars" exact render={() =><MyCalendar/>} />
                <Route path="/calendars/event/:id/update" render={() =><UpdateEvent/>}/>
-              </div>
-              </>
-              }
+               <Route path="/ListedProduct" render={() =><ListedProduct/>}/>
+               <Route path="/PendingForApproval" render={() =><PendingProduct/>}/>
+               <Route path="/Register"   render={() =><Register/>}/>
+              
+              
            
             </div> 
           </div>

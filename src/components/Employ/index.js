@@ -4,7 +4,7 @@ const Emply=()=>{
     return(
         <>
         <div className="d-flex ">
-            <div className="w-screen flex justify-center">
+            <div className="w-screen flex justify-center mt-2">
                < input type="text" className=" p-2 w-1/2 rounded-full" placeholder="Search" />
             </div>
 

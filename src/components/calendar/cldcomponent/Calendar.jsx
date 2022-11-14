@@ -228,9 +228,11 @@ const MyCalendar = () => {
             type: "ADD_EVENT",
             payload: res.data
           }) 
+          setIsProductModal(false)
            dispatch({type:"REMOVE_ERROR"})
            
           }
+
         })
         .catch(res=>{
           console.log("catch response, ", res)

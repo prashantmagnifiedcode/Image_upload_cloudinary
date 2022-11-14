@@ -12,23 +12,24 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-import { Link } from "react-router-dom";
+import { Link ,useHistory} from "react-router-dom";
 import Badge from '@mui/material/Badge';
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 import  SideBarMenu from '../SideBar/SideBar1'
 import { makeStyles } from "@material-ui/core/styles";
 import Box from '@mui/material/Box'
 import Popper from '@mui/material/Popper';
+import {useContextState} from '../../../Redux/Global/GlobalContext.js'
 const Header = () => {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const{logout,authState}=useContextState()
+  const history=useHistory()
+  console.log("which user",authState.WhichUser)
   const useStyles = makeStyles((theme) => ({
     grow: {
   
       "& .MuiDrawer-paperAnchorLeft": {
-        width:"20%"
-   
-
-        
+        width:"20%"       
         
       },
     },
@@ -36,11 +37,15 @@ const Header = () => {
   }))
   const classes= useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  
   const handleClick = (event) => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
-
+  
+  const logoutUser = () => {
+    logout();
+    history.push("/Login");
+  };
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popper' : undefined;
 
@@ -57,14 +62,13 @@ const Header = () => {
   const list = (anchor) => (
     <>
     <Box 
-      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 120 }}
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 70 }}
       className={classes.grow}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
       
     >
-
       
 <div>
 
@@ -92,7 +96,7 @@ const Header = () => {
         <div className="flex flex-coloumn  bg-white " >
           <div className="flex  justify-center">
 
-            <div>
+            <div onClick={logoutUser}>
           <Avatar alt="Remy Sharp" 
        sx={{ width: 35, height: 35 }}
       src="https://i.ytimg.com/vi/WV_0WylRdNo/maxresdefault.jpg"/>
@@ -112,11 +116,11 @@ const Header = () => {
       </Popper>
         </li>
 
-        <li><FindReplaceOutlinedIcon style={{"font-size":"25px"}}/></li>
-        <li><ShoppingCartOutlinedIcon style={{"font-size":"25px"}}/></li>
+        <li><FindReplaceOutlinedIcon style={{"font-size":"20px"}}/></li>
+        <li><ShoppingCartOutlinedIcon style={{"font-size":"20px"}}/></li>
         <li>
         <Badge badgeContent={4} color="primary">
-          < NotificationsNoneOutlinedIcon style={{"font-size":"25px"}}/>
+          < NotificationsNoneOutlinedIcon style={{"font-size":"20px"}}/>
           </Badge>
           </li>
         
