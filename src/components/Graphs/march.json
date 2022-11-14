@@ -1,0 +1,17 @@
+[
+    {
+      "state": "Alabama",
+      "totalUnemployed": "77,988",
+      "unemploymentPercent": 3.5
+    },
+    {
+      "state": "Alaska",
+      "totalUnemployed": "19,426",
+      "unemploymentPercent": 5.6
+    },
+    {
+      "state": "Arizona",
+      "totalUnemployed": "196,793",
+      "unemploymentPercent": 5.5
+    }
+  ]

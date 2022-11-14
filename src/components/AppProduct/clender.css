@@ -1,0 +1,26 @@
+.coursals{
+    width:45rem
+    
+}
+
+@media screen and (max-width:1100px) {
+    .coursals{
+        width:30rem
+    }
+    
+}
+@media screen and (max-width:1500px) {
+    .coursals{
+        width:28rem
+    }
+    .coursalcontianer{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width:500px) {
+    .coursals{
+        width:22rem
+    }
+   
+}

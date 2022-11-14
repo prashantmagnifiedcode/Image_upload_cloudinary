@@ -1,13 +1,14 @@
 import React, { Fragment } from "react";
-import Dash from '../components/Dashboard/dash'
-
+import { BrowserRouter } from 'react-router-dom';
+import Dashboard from '../components/Dashboard/dash'
 
 const Home = () => {
   return (
     <>
-      <Dash/>
+   < BrowserRouter>
+   <Dashboard/>
+   </BrowserRouter>
 
-    
     </>
   );
 };

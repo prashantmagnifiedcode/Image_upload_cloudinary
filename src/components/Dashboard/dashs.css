@@ -1,0 +1,123 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.containers{
+    background: rgb(103, 80, 236);
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 5% auto;
+      
+}
+._index{
+    height: 100%;
+    width: 100%;
+    background: white;
+    display: grid;
+    grid-template-rows: 80px auto;
+    
+
+}
+._index1{
+    height: 100%;
+    width: 100%;
+    background: white;
+    display: grid;
+    grid-template-rows: 80px auto;
+    
+    
+
+}
+._index .menu_data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+._index .menu_data .icons{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     padding:5px;
+     border-radius: 6px;
+
+     margin: 0px 4px 4px 0px;
+     color:gray
+    
+    }
+    ._index .menu_data :hover{
+        background: rgb(231, 232, 235);
+    }
+._index1 .menu_data{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+._index1 .menu_data .icons{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+     padding:5px;
+     border-radius: 6px;
+
+     margin: 0px 4px 4px 0px;
+     color:gray
+    
+    }
+    ._index1 .menu_data :hover{
+        background: rgb(231, 232, 235);
+    }
+.Access{
+    display: grid;
+    grid-template-rows: 15vh 85vh ;
+    
+}
+
+.Access .header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.Card_section{
+    
+    display:flex;
+    flex-wrap:wrap;
+    padding: 3px;
+    /* background:red; */
+    
+    
+    
+
+}
+
+@media  screen and (max-width:900px) {
+    .containers{
+        display: grid;
+       grid-template-columns: auto;
+       
+       
+    }
+    ._index{
+        display: none;
+    }
+    ._index1{
+        display: visible;
+    }
+  
+  
+    
+   
+}
+
+/* //calendar color */
+.rbc-time-content,.rbc-month-view{
+    background-color: white;
+}
+.rbc-calendar{
+    padding:5px 5px
+}
